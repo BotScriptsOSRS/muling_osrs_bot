@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="muling">
+    <output-path>$USER_HOME$/OSBot/Scripts</output-path>
+    <root id="archive" name="muling.jar">
+      <element id="module-output" name="muling" />
+    </root>
+  </artifact>
+</component>
