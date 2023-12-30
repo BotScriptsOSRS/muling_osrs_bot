@@ -1,7 +1,7 @@
 import java.util.concurrent.Callable;
 
 import org.osbot.rs07.api.map.Area;
-import org.osbot.rs07.api.map.Position;
+import org.osbot.rs07.api.map.constants.Banks;
 import org.osbot.rs07.api.ui.Tab;
 import org.osbot.rs07.script.Script;
 import org.osbot.rs07.script.ScriptManifest;
@@ -16,8 +16,8 @@ import java.util.Random;
         logo = ""
 )
 public class MainScript extends Script {
-    private static final Area mulingArea = (new Area(2969, 3353, 2967, 3351)).setPlane(1);
-    private static final Position mulingPosition = new Position(2969, 3353, 1);
+    private static final Area mulingArea = Banks.GRAND_EXCHANGE;
+    private static final Area mulingWalkTo = new Area(3162, 3487, 3167, 3487);
     private Random random = new Random();
     private long nextAntiAfkTime = 0;
     private int lastAction = -1;
@@ -25,10 +25,11 @@ public class MainScript extends Script {
     @Override
     public int onLoop() {
         if (!mulingArea.contains(myPlayer())) {
-            this.getWalking().webWalk(mulingPosition);
+            this.getWalking().webWalk(mulingWalkTo);
         }
         if (getWorlds().getCurrentWorld() != 456) {
             waitForCondition(() -> getWorlds().hop(456));
+            waitForCondition(() -> getWorlds().getCurrentWorld() ==456);
         }
         if (!getTrade().isCurrentlyTrading()) {
             if (getTrade().getLastRequestingPlayer() != null) {
