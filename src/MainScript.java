@@ -18,7 +18,7 @@ import java.util.Random;
 public class MainScript extends Script {
     private static final Area mulingArea = Banks.GRAND_EXCHANGE;
     private static final Area mulingWalkTo = new Area(3162, 3487, 3167, 3487);
-    private Random random = new Random();
+    private final Random random = new Random();
     private long nextAntiAfkTime = 0;
     private int lastAction = -1;
 
